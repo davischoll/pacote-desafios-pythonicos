@@ -1,15 +1,26 @@
 """
 02. both_ends
 
-Dada uma string s, retorne uma string feita com os dois primeiros
-e os dois ultimos caracteres da string original.
-Exemplo: 'spring' retorna 'spng'. Entretanto, se o tamanho da string
-for menor que 2, retorne uma string vazia.
+Dada uma string s, retorne uma string feita com os dois primeiros e os dois últimos caracteres da string original.
+Exemplo: 'spring' retorna 'spng'. Entretanto, se o tamanho da string for menor que 2, retorne uma string vazia.
 """
 
+
 def both_ends(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    return s[:2] + s[-2:] if len(s) > 1 else ''
+
+
+#    --- Outras formas ---
+#    return f'{s[:2] + s[-2:]}' if len(s) > 1 else ''
+
+"""
+    if len(s) > 1:
+        string = s[:2] + s[-2:]
+    else:
+        string = ''
+
+    return string
+"""
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
