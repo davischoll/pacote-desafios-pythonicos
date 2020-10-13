@@ -1,9 +1,8 @@
 """
 04. mix_up
 
-Dadas as strings a e b, retorne uma string com a e b separados
-por um espaço '<a> <b>', além disso, troque os 2 primeiros caracteres
-das duas strings.
+Dadas as strings a e b, retorne uma string com a e b separados por um espaço '<a> <b>'.
+Além disso, troque os 2 primeiros caracteres das duas strings.
 
 Exemplo:
     'mix', 'pod' -> 'pox mid'
@@ -12,9 +11,14 @@ Exemplo:
 Assuma que a e b tem tamanho 2 ou maior.
 """
 
+
 def mix_up(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    return ' '.join([''.join([b[:2], a[2:]]), ''.join([a[:2], b[2:]])])
+
+#    string1 = b[:2] + a[2:]
+#    string2 = a[:2] + b[2:]
+#    string_final = ' '.join([string1, string2])
+#    return string_final
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
