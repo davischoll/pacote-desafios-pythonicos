@@ -13,7 +13,10 @@ Assuma que a e b tem tamanho 2 ou maior.
 
 
 def mix_up(a, b):
-    return ' '.join([''.join([b[:2], a[2:]]), ''.join([a[:2], b[2:]])])
+    if len(a) < 2 or len(b) < 2:
+        return ''
+    else:
+        return ' '.join([''.join([b[:2], a[2:]]), ''.join([a[:2], b[2:]])])
 
 #    string1 = b[:2] + a[2:]
 #    string2 = a[:2] + b[2:]
@@ -46,3 +49,5 @@ if __name__ == '__main__':
     test(mix_up, ('dog', 'dinner'), 'dig donner')
     test(mix_up, ('gnash', 'sport'), 'spash gnort')
     test(mix_up, ('pezzy', 'firm'), 'fizzy perm')
+    test(mix_up, ('paa', 'cx'), 'cxa pa')
+    test(mix_up, ('pa', 'c'), '')

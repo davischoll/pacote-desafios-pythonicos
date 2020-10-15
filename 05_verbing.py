@@ -1,18 +1,28 @@
 """
 05. verbing
 
-Dada uma string, se seu tamanho for pelo menos 3,
-adicione 'ing' no seu fim, a menos que a string
-já termine com 'ing', nesse caso adicione 'ly'.
-
-Se o tamanho da string for menor que 3, não altere nada.
+Dada uma string, se seu tamanho for pelo menos 3, adicione 'ing' no seu fim, a menos que a string
+já termine com 'ing'. Nesse caso, adicione 'ly'. Se o tamanho da string for menor que 3, não altere nada.
 
 Retorne o resultado da string.
 """
 
+
 def verbing(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    """
+    if len(s) >= 3:
+        return s + 'ly' if s[-3:] == 'ing' else s + 'ing'
+    return s
+    """
+
+    if len(s) >= 3:
+        if s[-3:] == 'ing':
+            result = s + 'ly'
+        else:
+            result = s + 'ing'
+    else:
+        result = s
+    return result
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
