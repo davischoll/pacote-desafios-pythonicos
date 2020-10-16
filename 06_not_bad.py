@@ -1,20 +1,26 @@
 """
 06. not_bad
 
-Dada uma string, encontre a primeira aparição das
-substrings 'not' e 'bad'. Se 'bad' aparecer depois
-de 'not', troque todo o trecho entre 'not' e 'bad'
-por 'good' e retorne a string resultante.
+Dada uma string, encontre a primeira aparição das substrings 'not' e 'bad'. Se 'bad' aparecer depois
+de 'not', troque todo o trecho entre 'not' e 'bad' por 'good' e retorne a string resultante.
 
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
+
 def not_bad(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    if s.find('not') < s.find('bad'):
+        return s.replace(s[s.find('not'):s.find('bad') + 3], 'good')
+    else:
+        return s
 
 
-# --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
+"""
+    return s if s.find('not') > s.find('bad') else s.replace(s[s.find('not'):s.find('bad')+3], 'good')
+"""
+
+
+# --- Daqui para baixo são apenas códigos auxiliares de teste. ---
 
 def test(f, in_, expected):
     """
