@@ -1,19 +1,24 @@
 """
 08. match_ends
 
-Dada uma lista de strings, retorne a contagem do número de
-strings onde o comprimento da cadeia é 2 ou mais e o primeiro
-e o último caracteres da cadeia são os mesmos.
+Dada uma lista de strings, retorne a contagem do número de strings onde o comprimento da cadeia é 2 ou mais
+e o primeiro e o último caracteres da cadeia são os mesmos.
 
 PS: Python não possui o operador ++, porém += funciona.
 """
 
+
 def match_ends(words):
-    # +++ SUA SOLUÇÃO +++
-    return
+    count = 0
+    for word in words:
+        if len(word) >= 2 and word[0] == word[-1]:
+            count += 1
+    return count
+
+    # return len([k for k in words if len(k) > 1 and k[0] == k[-1]])
 
 
-# --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
+# --- Daqui para baixo são apenas códigos auxiliares de teste. ---
 
 def test(f, in_, expected):
     """
