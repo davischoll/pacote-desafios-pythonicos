@@ -15,9 +15,9 @@ def remove_adjacent(nums):
 
     new_list = [nums[0]]
 
-    for c, n in zip(nums[:-1], nums[1:]):
-        if c != n:
-            new_list.append(n)
+    for current, next_ in zip(nums[:-1], nums[1:]):
+        if current != next_:
+            new_list.append(next_)
 
     return new_list
 

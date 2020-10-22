@@ -1,20 +1,29 @@
 """
 12. linear_merge
 
-Dada duas listas ordenadas em ordem crescente, crie e retorne uma lista
-com a combinação das duas listas, também em ordem crescente. Você pode
-modificar as listas recebidas.
+Dadas duas listas ordenadas em ordem crescente, crie e retorne uma lista com a combinação
+das duas listas, também em ordem crescente. Você pode modificar as listas recebidas.
 
-A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
-única passagem em cada uma das listas.
+A sua solução deve rodar em tempo linear, ou seja, deve fazer uma única passagem em cada uma das listas.
 """
 
+from heapq import merge
+
+
 def linear_merge(list1, list2):
-    # +++ SUA SOLUÇÃO +++
-    return
+    # == SOLUÇÃO 1 == #
+    # lista = list1 + list2
+    # lista.sort()
+    # return lista
+
+    # == SOLUÇÃO == 2 #
+    # return sorted(list1 + list2)
+
+    # == SOLUÇÃO 3 == #
+    return list(merge(list1, list2))
 
 
-# --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
+# --- Daqui para baixo são apenas códigos auxiliares de teste. ---
 
 def test(f, in_, expected):
     """
