@@ -1,8 +1,7 @@
 """
 13. wordcount
 
-Este desafio é um programa que conta palavras de um arquivo qualquer de duas
-formas diferentes.
+Este desafio é um programa que conta palavras de um arquivo qualquer de duas formas diferentes.
 
 A. Lista todas as palavras por ordem alfabética indicando suas ocorrências.
 
@@ -38,28 +37,54 @@ a 2
 
 Abaixo já existe um esqueleto do programa para você preencher.
 
-Você encontrará a função main() chama as funções print_words() e
+Você encontrará a função main(), que chama as funções print_words() e
 print_top() de acordo com o parâmetro --count ou --topcount.
 
-Seu trabalho é implementar as funções print_words() e depois print_top().
+Seu trabalho é implementar as funções print_words() e print_top().
 
 Dicas:
 * Armazene todas as palavras em caixa baixa, assim, as palavras 'A' e 'a'
   contam como a mesma palavra.
-* Use str.split() (sem parêmatros) para fazer separar as palavras.
+* Use str.split() (sem parâmetros) para separar as palavras.
 * Não construa todo o programade uma vez. Faça por partes executando
 e conferindo cada etapa do seu progresso.
 """
 
 import sys
+from collections import Counter
 
 
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
+def print_words(filename):
+    dados = count_words(filename)
 
-# A função abaixo chama print_words() ou print_top() de acordo com os
-# parêtros do programa.
+    lista = sorted(list(dados.items()))
+
+    for letter, qtde in lista:
+        print(letter, qtde)
+
+
+def print_top(filename):
+    dados = count_words(filename)
+
+    lista = sorted(list(dados.items()), reverse=True, key=lambda x: x[1])
+
+    for letter, qtde in lista[:20]:
+        print(letter, qtde)
+
+
+def count_words(filename):
+    with open("letras.txt", "r") as file:
+        read_data = file.read().lower().split()
+
+    dados = dict(Counter(read_data))
+
+    return dados
+
+
+# A função abaixo chama print_words() ou print_top() de acordo com os parâmetros do programa.
 def main():
     if len(sys.argv) != 3:
         print('Utilização: ./13_wordcount.py {--count | --topcount} file')
