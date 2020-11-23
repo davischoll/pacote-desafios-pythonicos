@@ -53,9 +53,11 @@ e conferindo cada etapa do seu progresso.
 import sys
 from collections import Counter
 
-
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
+
+"""
+### PRIMEIRA SOLUÇÃO MINHA (DAVI) ###  
 
 def print_words(filename):
     dados = count_words(filename)
@@ -65,7 +67,6 @@ def print_words(filename):
     for letter, qtde in lista:
         print(letter, qtde)
 
-
 def print_top(filename):
     dados = count_words(filename)
 
@@ -74,7 +75,6 @@ def print_top(filename):
     for letter, qtde in lista[:20]:
         print(letter, qtde)
 
-
 def count_words(filename):
     with open("letras.txt", "r") as file:
         read_data = file.read().lower().split()
@@ -82,6 +82,72 @@ def count_words(filename):
     dados = dict(Counter(read_data))
 
     return dados
+"""
+
+"""
+### SEGUNDA SOLUÇÃO (HENRIQUE B.) => CÓDIGO MELHORADO ###
+
+def report(words):
+    for w, qty in words:
+        print(w, qty)
+
+
+def print_words(filename):
+    counter = count_words(filename)
+
+    lista = sorted(counter.items())
+
+    report(lista)
+
+
+def print_top(filename):
+    dados = count_words(filename)
+
+    lista = sorted(list(dados.items()), reverse=True, key=lambda x: x[1])
+
+    report(lista[:20])
+
+
+def count_words(filename):
+    with open(filename) as f:
+        content = f.read()
+
+    words = content.lower().split()
+
+    return Counter(words)
+"""
+
+
+# SOLUÇÃO FINAL (HENRIQUE B.) ###
+
+def report(words):
+    return '\n'.join([f'{w} {qty}' for w, qty in words])
+
+
+def asc(counter):
+    return sorted(counter.items())
+
+
+def top(counter, qty=20):
+    return sorted(counter.items(), reverse=True, key=lambda t: t[-1])[:qty]
+
+
+def read(filename):
+    with open(filename) as f:
+        return f.read()
+
+
+def count(content):
+    words = content.lower().split()
+    return Counter(words)
+
+
+def count_words(filename):
+    return report(asc(count(read(filename))))
+
+
+def top_words(filename):
+    return report(top(count(read(filename))))
 
 
 # A função abaixo chama print_words() ou print_top() de acordo com os parâmetros do programa.
@@ -93,9 +159,9 @@ def main():
     option = sys.argv[1]
     filename = sys.argv[2]
     if option == '--count':
-        print_words(filename)
+        print(count_words(filename))
     elif option == '--topcount':
-        print_top(filename)
+        print(top_words(filename))
     else:
         print('unknown option: ' + option)
         sys.exit(1)
